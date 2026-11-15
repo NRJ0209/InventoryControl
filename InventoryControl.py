@@ -6,12 +6,22 @@ def add_product(inventory: dict, name: str,
     Modify the inventory only when the operation succeeds.
     """
 
+    # Check for invalid values or duplicate names
+    if name == "" or price < 0 or quantity < 0 or name in inventory:
+        return False
+
+    # Only save the product if all checks passed
+    inventory[name] = {"price": price, "quantity": quantity}
+    return True
+
+
 def register_sale(inventory: dict, name: str, quantity: int) -> bool:
     """Sell a positive integer quantity of an existing product.
 
     Return True and reduce stock if enough units are available.
     Otherwise, return False without changing the inventory.
     """
+
 
 def restock_product(inventory: dict, name: str, quantity: int) -> bool:
     """Add a positive integer quantity to an existing product's stock.
@@ -20,6 +30,7 @@ def restock_product(inventory: dict, name: str, quantity: int) -> bool:
     or the quantity is not positive.
     """
 
+
 def find_low_stock(inventory: dict, minimum: int) -> list[str]:
     """Return product names with stock strictly below the minimum.
 
@@ -27,6 +38,7 @@ def find_low_stock(inventory: dict, minimum: int) -> list[str]:
     Return an empty list if no products match.
     Raise ValueError if the minimum is negative.
     """
+
 
 def calculate_total_value(inventory: dict) -> float:
     """Return the total stock value in euros, rounded to two decimals.
