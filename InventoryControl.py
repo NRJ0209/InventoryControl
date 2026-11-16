@@ -29,6 +29,13 @@ def restock_product(inventory: dict, name: str, quantity: int) -> bool:
     Return True if updated, or False if the product is missing
     or the quantity is not positive.
     """
+    # Reject the operation if the product does not exist or the quantity is zero or negative
+    if name not in inventory or quantity <= 0:
+        return False
+
+    # Add the received units to the product's current stock
+    inventory[name]["quantity"] += quantity
+    return True
 
 
 def find_low_stock(inventory: dict, minimum: int) -> list[str]:
