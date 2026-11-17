@@ -21,7 +21,11 @@ def register_sale(inventory: dict, name: str, quantity: int) -> bool:
     Return True and reduce stock if enough units are available.
     Otherwise, return False without changing the inventory.
     """
-
+    if name in inventory:
+        if quantity <= inventory[name]:
+            inventory[name] -= quantity
+            return True
+    return False
 
 def restock_product(inventory: dict, name: str, quantity: int) -> bool:
     """Add a positive integer quantity to an existing product's stock.
