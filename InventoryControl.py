@@ -45,6 +45,17 @@ def find_low_stock(inventory: dict, minimum: int) -> list[str]:
     Return an empty list if no products match.
     Raise ValueError if the minimum is negative.
     """
+    #validate the input first: a negative minimum makes no sense
+    if minimum < 0:
+        raise ValueError("Minimum must be non-negative")
+    #will hold the names of the products that are below the minimum
+    low_stock = []
+    #go through every product name in inventory
+    for name, data in inventory.items():
+        if data["quantity"] < minimum:
+            low_stock.append(name)
+    #if no product matched this is an empty list
+    return low_stock
 
 
 def calculate_total_value(inventory: dict) -> float:
