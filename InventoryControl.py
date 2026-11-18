@@ -22,9 +22,10 @@ def register_sale(inventory: dict, name: str, quantity: int) -> bool:
     Otherwise, return False without changing the inventory.
     """
     if name in inventory:
-        if quantity <= inventory[name]:
-            inventory[name] -= quantity
-            return True
+        if quantity >= 0:
+            if quantity <= inventory[name]["quantity"]:
+                inventory[name]["quantity"] -= quantity
+                return True
     return False
 
 def restock_product(inventory: dict, name: str, quantity: int) -> bool:
