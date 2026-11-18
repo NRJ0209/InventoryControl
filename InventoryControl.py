@@ -73,4 +73,5 @@ def calculate_total_value(inventory: dict) -> float:
     total = 0.0
     for name, data in inventory.items():
         total += data["price"] * data["quantity"]
+    total = round(total, 2)
     return total
