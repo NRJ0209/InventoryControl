@@ -69,3 +69,10 @@ def calculate_total_value(inventory: dict) -> float:
     Multiply each unit price by its available quantity and sum the values.
     Return 0.0 for an empty inventory.
     """
+    if inventory == {}:
+        return 0.0
+    total = 0.0
+    for name, data in inventory.items():
+        total += data["price"] * data["quantity"]
+    total = round(total, 2)
+    return total
